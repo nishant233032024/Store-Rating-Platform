@@ -27,10 +27,9 @@ services:
         value: "86400000"
       - key: BCRYPT_SALT_ROUNDS
         value: "10"
-      # Set this to the deployed frontend origin if the frontend ever calls the
-      # API directly instead of going through the Vercel rewrite.
+      # Production frontend origin; also used by the API's origin check.
       - key: CORS_ORIGIN
-        sync: false
+        value: https://frontend-jet-omega-owz6ey1l8l.vercel.app
 
 databases:
   - name: store-rating-db
