@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { RatingDisplay } from '../../components/RatingStars'
 
 function formatDate(value) {
   if (!value) return '-'
@@ -84,9 +85,11 @@ export default function StoreOwnerDashboard() {
                 Average rating
               </p>
               <p className="text-3xl font-bold text-yellow-600">
-                {store.averageRating === 'Not rated yet'
-                  ? 'Not rated yet'
-                  : `${store.averageRating} ★`}
+                {store.averageRating === 'Not rated yet' ? (
+                  'Not rated yet'
+                ) : (
+                  <RatingDisplay value={store.averageRating} />
+                )}
               </p>
             </div>
             <div>
@@ -126,7 +129,7 @@ export default function StoreOwnerDashboard() {
                   <tr key={rater.userId} className="border-b border-gray-100 last:border-0">
                     <td className="px-4 py-3 text-sm text-gray-900">{rater.name}</td>
                     <td className="px-4 py-3 text-sm font-medium text-yellow-600">
-                      {rater.rating} ★
+                      <RatingDisplay value={rater.rating} />
                     </td>
                     <td className="px-4 py-3 text-sm text-gray-600">
                       {formatDate(rater.submittedAt)}

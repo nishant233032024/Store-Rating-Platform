@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { RatingDisplay } from '../../components/RatingStars'
 
 const EMPTY_FILTERS = { name: '', email: '', address: '' }
 
@@ -161,7 +162,7 @@ export default function AdminStoresTable() {
                       <span className="text-gray-500">Not rated yet</span>
                     ) : (
                       <span className="font-medium text-yellow-600">
-                        {store.averageRating} ★
+                        <RatingDisplay value={store.averageRating} />
                       </span>
                     )}
                   </td>

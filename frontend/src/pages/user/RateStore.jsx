@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
+import { RatingDisplay } from '../../components/RatingStars'
 import { validateRating } from '../../lib/validation'
 
 const STARS = [1, 2, 3, 4, 5]
@@ -131,14 +132,14 @@ export default function RateStore() {
             <span className="font-medium">Overall rating:</span>{' '}
             {store.averageRating === 'Not rated yet'
               ? 'Not rated yet'
-              : `${store.averageRating} ★`}
+              : <RatingDisplay value={store.averageRating} />}
           </p>
           <p>
             <span className="font-medium">Ratings:</span> {store.ratingCount}
           </p>
           <p>
             <span className="font-medium">Your rating:</span>{' '}
-            {store.myRating ? `${store.myRating} ★` : 'Not rated'}
+            {store.myRating ? <RatingDisplay value={store.myRating} /> : 'Not rated'}
           </p>
         </div>
 

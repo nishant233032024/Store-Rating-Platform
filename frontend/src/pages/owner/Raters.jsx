@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { RatingDisplay } from '../../components/RatingStars'
 
 function formatDate(value) {
   if (!value) return '-'
@@ -96,7 +97,7 @@ export default function StoreOwnerRaters() {
                 <tr key={rater.userId} className="border-b border-gray-100 last:border-0">
                   <td className="px-4 py-3 text-sm text-gray-900">{rater.name}</td>
                   <td className="px-4 py-3 text-sm font-medium text-yellow-600">
-                    {rater.rating} ★
+                    <RatingDisplay value={rater.rating} />
                   </td>
                   <td className="px-4 py-3 text-sm text-gray-600">
                     {formatDate(rater.submittedAt)}

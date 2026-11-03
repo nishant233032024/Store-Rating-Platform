@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { RatingDisplay } from '../../components/RatingStars'
 
 export default function NormalUserStoreListing() {
   const [stores, setStores] = useState([])
@@ -139,14 +140,16 @@ export default function NormalUserStoreListing() {
                       <span className="text-gray-500">Not rated yet</span>
                     ) : (
                       <span className="font-medium text-yellow-600">
-                        {store.averageRating} ★
+                        <RatingDisplay value={store.averageRating} />
                       </span>
                     )}
                   </td>
                   <td className="px-4 py-3 text-sm text-gray-600">{store.ratingCount}</td>
                   <td className="px-4 py-3 text-sm">
                     {store.myRating ? (
-                      <span className="font-medium text-blue-700">{store.myRating} ★</span>
+                      <span className="font-medium text-blue-700">
+                        <RatingDisplay value={store.myRating} />
+                      </span>
                     ) : (
                       <span className="text-gray-400">Not rated</span>
                     )}

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import { RatingDisplay } from '../../components/RatingStars'
 
 const ROLE_STYLES = {
   NORMAL_USER: 'bg-blue-100 text-blue-800',
@@ -115,11 +116,14 @@ export default function AdminUserDetails() {
                 <Field
                   label="Average rating"
                   value={
-                    store.averageRating === 'Not rated yet'
-                      ? 'Not rated yet'
-                      : `${store.averageRating} ★ (${store.ratingCount} rating${
-                          store.ratingCount === 1 ? '' : 's'
-                        })`
+                    store.averageRating === 'Not rated yet' ? (
+                      'Not rated yet'
+                    ) : (
+                      <>
+                        <RatingDisplay value={store.averageRating} /> ({store.ratingCount}{' '}
+                        rating{store.ratingCount === 1 ? '' : 's'})
+                      </>
+                    )
                   }
                 />
               </div>
