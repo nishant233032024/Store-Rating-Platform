@@ -101,10 +101,6 @@ export default function Login() {
 
       <div className="rounded-lg border border-gray-200 bg-white p-8 shadow-sm">
         <h2 className="mb-1 text-lg font-semibold text-gray-900">Demo accounts</h2>
-        <p className="mb-4 text-sm text-gray-500">
-          Created by <code className="rounded bg-gray-100 px-1">npm run seed</code> in the
-          backend.
-        </p>
 
         <ul className="space-y-3">
           {DEMO_ACCOUNTS.map((account) => (
