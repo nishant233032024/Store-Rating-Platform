@@ -73,7 +73,7 @@ router.post('/register', async (req, res) => {
 
     // Role is hard-coded: a client-supplied role can never escalate privileges.
     const result = await query(
-      `INSERT INTO "User" (name, email, passwordHash, address, role)
+      `INSERT INTO "User" (name, email, "passwordHash", address, role)
        VALUES ($1, $2, $3, $4, 'NORMAL_USER')
        RETURNING id, name, email, address, role, "authVersion"`,
       [body.name, email, passwordHash, body.address]
@@ -93,7 +93,7 @@ router.post('/login', async (req, res) => {
     const email = normalizeEmail(body.email)
 
     const result = await query(
-      'SELECT id, name, email, address, passwordHash, role, "authVersion" FROM "User" WHERE LOWER(email) = LOWER($1)',
+      'SELECT id, name, email, address, "passwordHash", role, "authVersion" FROM "User" WHERE LOWER(email) = LOWER($1)',
       [email]
     )
 

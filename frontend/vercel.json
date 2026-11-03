@@ -6,7 +6,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://REPLACE-WITH-YOUR-RENDER-SERVICE.onrender.com/api/:path*"
+      "destination": "https://store-rating-api-i2gl.onrender.com/api/:path*"
     },
     {
       "source": "/(.*)",

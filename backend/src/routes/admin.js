@@ -176,7 +176,7 @@ router.post('/users', validateRole('SYSTEM_ADMIN'), async (req, res) => {
     const passwordHash = await bcrypt.hash(body.password, saltRounds)
 
     const result = await query(
-      `INSERT INTO "User" (name, email, passwordHash, address, role)
+      `INSERT INTO "User" (name, email, "passwordHash", address, role)
        VALUES ($1, $2, $3, $4, $5)
        RETURNING id, name, email, address, role, "createdAt"`,
       [body.name, email, passwordHash, body.address, body.role]

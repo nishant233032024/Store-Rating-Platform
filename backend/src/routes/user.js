@@ -198,7 +198,7 @@ router.patch('/password', authenticate, async (req, res) => {
     }
 
     const userId = req.user.userId
-    const userResult = await query('SELECT passwordHash FROM "User" WHERE id = $1', [userId])
+    const userResult = await query('SELECT "passwordHash" FROM "User" WHERE id = $1', [userId])
 
     if (userResult.rows.length === 0) {
       return res.status(404).json({ error: 'User not found' })

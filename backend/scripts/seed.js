@@ -24,7 +24,7 @@ async function seed() {
   async function createUser(name, email, password, address, role) {
     const passwordHash = await bcrypt.hash(password, saltRounds)
     const result = await query(
-      `INSERT INTO "User" (name, email, passwordHash, address, role)
+      `INSERT INTO "User" (name, email, "passwordHash", address, role)
        VALUES ($1, $2, $3, $4, $5)
        RETURNING id`,
       [name, email, passwordHash, address, role]

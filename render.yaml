@@ -5,7 +5,9 @@ services:
     plan: free
     rootDir: backend
     buildCommand: npm install
-    startCommand: npm start
+    # Seed is idempotent: it creates demo data only when the database is empty,
+    # then starts the API. This avoids requiring a paid Render Shell session.
+    startCommand: npm run seed && npm start
     healthCheckPath: /health
     envVars:
       # node:sqlite and the test runner need Node >= 22.5

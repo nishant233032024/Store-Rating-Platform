@@ -212,8 +212,8 @@ The repository contains configuration for **Vercel** (frontend) and **Render** (
    `DATABASE_URL` from the database.
 4. Set `CORS_ORIGIN` to the deployed frontend URL if browsers ever call the API directly (not
    needed when using the Vercel rewrite below).
-5. Tables are created on first boot; run `npm run seed` once from a Render shell if you want the
-   demo accounts in production.
+5. The Render start command runs the idempotent seed automatically before starting the API. It
+   creates demo accounts only when the database is empty, so a paid Render Shell is not required.
 
 Notes: `NODE_VERSION` must stay at 22.11.0 or another version `>= 22.5`, and Render's filesystem is
 ephemeral, so the service must use Postgres — a SQLite file would be wiped on every deploy.
