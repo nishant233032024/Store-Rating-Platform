@@ -221,6 +221,8 @@ ephemeral, so the service must use Postgres — a SQLite file would be wiped on 
 ### Frontend on Vercel
 
 1. Import the repository, set the **root directory** to `frontend`.
+   The linked Vercel project is configured with this root so GitHub `main` deployments build the
+   React application rather than the repository wrapper.
 2. Vercel detects Vite; `frontend/vercel.json` fixes the build command, output directory and routing.
 3. Replace the `destination` in `frontend/vercel.json` (`/api/:path*`) with the real Render service URL.
 4. Deploy.
